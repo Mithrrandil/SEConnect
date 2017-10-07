@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--容器配置文件-->
+    <context:property-placeholder location="classpath:project.properties"/>
+
+    <!--全局扫描Bean-->
+    <context:component-scan base-package="com.TravisChenn.j2ee.Seconnect.service"/>
+    <context:component-scan base-package="com.TravisChenn.j2ee.Seconnect.dao"/>
+
+    <!--连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close" lazy-init="false">
+
+        <!-- 数据库基本信息配置 -->
+        <property name="driverClassName" value="${dataSource.driver}"/>
+        <property name="url" value="${dataSource.url}"/>
+        <property name="username" value="${dataSource.username}"/>
+        <property name="password" value="${dataSource.password}"/>
+
+        <!--初始化连接数-->
+        <property name="initialSize" value="5"/>
+
+        <!--最小连接池数量-->
+        <property name="minIdle" value="5"/>
+
+        <!--最大并发连接数-->
+        <property name="maxActive" value="200"/>
+
+        <!--开启慢SQL记录功能-->
+        <property name="connectionProperties" value="druid.stat.mergeSql=true"/>
+
+        <!--获取连接最大等待时间-->
+        <property name="maxWait" value="60000"/>
+
+        <!--检测空闲连接-->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!--连接最小生存时间-->
+        <property name="minEvictableIdleTimeMillis" value="150000"/>
+
+        <!--申请连接时如果超时则检查连接的SQL是否有效-->
+        <property name="testWhileIdle" value="true"/>
+
+        <!--获取连接时检查连接是否可用-->
+        <property name="testOnBorrow" value="false"/>
+
+        <!--归还连接时检查连接是否可用-->
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+
+        <!--最大的 PreparedStatement 数量-->
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!--开启自动提交-->
+        <property name="defaultAutoCommit" value="true"/>
+
+        <!--关闭空闲连接时长-->
+        <property name="removeAbandonedTimeout" value="1800"/>
+
+        <!--关闭长时间空闲连接 -->
+        <property name="removeAbandoned" value="true"/>
+
+        <!--通过别名进行扩展插件-->
+        <property name="filters" value="log4j"/>
+
+    </bean>
+
+    <!--Mybatis-sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <!--指定配置文件位置-->
+        <property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"/>
+
+        <!--指定映射配置文件-->
+        <property name="mapperLocations" value="classpath*:config/mybatis/mapping/*.xml"/>
+
+        <!--指定数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--Mybatis-sqlSession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+
+        <!--构造器注入SqlSessionFactory-->
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+
+        <!--指定执行类型为批量插入-->
+        <constructor-arg name="executorType" value="BATCH"/>
+    </bean>
+
+    <!--Mybatis-Dao-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫描所有Dao实现类-->
+        <property name="basePackage" value="com.TravisChenn.j2ee.Seconnect.dao"/>
+    </bean>
+
+    <!--Spring 事务控制-->
+    <bean name="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--Quartz 支持Spring依赖注入-->
+    <bean id="jobFactory" class="com.TravisChenn.j2ee.Seconnect.job.JobFactory"/>
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobFactory" ref="jobFactory"/>
+    </bean>
+
+    <!--开启事务配置-->
+    <aop:config>
+        <!--事务切入点-->
+        <aop:pointcut id="txPoint" expression="execution(* com.TravisChenn.j2ee.Seconnect.service..*(..))"/>
+
+        <!--事务增强-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
+    </aop:config>
+
+    <!--配置事务增强-->
+    <tx:advice id="txAdvice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <!--将所有的方法配置为事务-->
+            <tx:method name="*"/>
+
+            <!--将所有get方法配置为只读-->
+            <tx:method name="select*" read-only="true"/>
+        </tx:attributes>
+
+    </tx:advice>
+
+    <!--===== Bean Start =====-->
+
+</beans>

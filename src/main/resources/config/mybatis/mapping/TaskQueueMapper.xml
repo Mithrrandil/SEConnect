@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.TravisChenn.j2ee.Seconnect.dao.TaskQueueDao">
+    <resultMap id="BaseResultMap" type="com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="TASK_TYPE" property="taskType" jdbcType="VARCHAR"/>
+        <result column="TASK_ORDER" property="taskOrder" jdbcType="VARCHAR"/>
+        <result column="TASK_TARGET" property="taskTarget" jdbcType="VARCHAR"/>
+        <result column="TASK_CONTENT" property="taskContent" jdbcType="VARCHAR"/>
+        <result column="TASK_DATE" property="taskDate" jdbcType="TIMESTAMP"/>
+        <result column="TASK_STATE" property="taskState" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        ID, TASK_TYPE, TASK_ORDER, TASK_TARGET, TASK_CONTENT, TASK_DATE, TASK_STATE
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.TaskQueueExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from task_queue
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from task_queue
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectMandatoryUnlockAuthorityTaskInSevenDays" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from task_queue
+        where
+        TO_DAYS(NOW()) - TO_DAYS(task_queue.TASK_DATE) <![CDATA[<=]]> 7
+        and
+        TASK_TYPE = '强制开锁权限请求';
+    </select>
+    <select id="selectLockErrorTaskInSevenDays" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from task_queue
+        where
+        TO_DAYS(NOW()) - TO_DAYS(task_queue.TASK_DATE) <![CDATA[<=]]> 7
+        and
+        TASK_TYPE = '锁体异常报修请求';
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM task_queue
+        WHERE ID = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.TaskQueueExample">
+        delete from task_queue
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue">
+        INSERT INTO task_queue (ID, TASK_TYPE, TASK_ORDER, TASK_TARGET,
+                                TASK_CONTENT, TASK_DATE, TASK_STATE
+        )
+        VALUES (#{id,jdbcType=INTEGER}, #{taskType,jdbcType=VARCHAR}, #{taskOrder,jdbcType=VARCHAR},
+                #{taskTarget,jdbcType=VARCHAR},
+                #{taskContent,jdbcType=VARCHAR}, #{taskDate,jdbcType=TIMESTAMP}, #{taskState,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue">
+        insert into task_queue
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="taskType != null">
+                TASK_TYPE,
+            </if>
+            <if test="taskOrder != null">
+                TASK_ORDER,
+            </if>
+            <if test="taskTarget != null">
+                TASK_TARGET,
+            </if>
+            <if test="taskContent != null">
+                TASK_CONTENT,
+            </if>
+            <if test="taskDate != null">
+                TASK_DATE,
+            </if>
+            <if test="taskState != null">
+                TASK_STATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="taskType != null">
+                #{taskType,jdbcType=VARCHAR},
+            </if>
+            <if test="taskOrder != null">
+                #{taskOrder,jdbcType=VARCHAR},
+            </if>
+            <if test="taskTarget != null">
+                #{taskTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="taskContent != null">
+                #{taskContent,jdbcType=VARCHAR},
+            </if>
+            <if test="taskDate != null">
+                #{taskDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="taskState != null">
+                #{taskState,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.TaskQueueExample"
+            resultType="java.lang.Integer">
+        select count(*) from task_queue
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update task_queue
+        <set>
+            <if test="record.id != null">
+                ID = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.taskType != null">
+                TASK_TYPE = #{record.taskType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.taskOrder != null">
+                TASK_ORDER = #{record.taskOrder,jdbcType=VARCHAR},
+            </if>
+            <if test="record.taskTarget != null">
+                TASK_ORDER = #{record.taskTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="record.taskContent != null">
+                TASK_CONTENT = #{record.taskContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.taskDate != null">
+                TASK_DATE = #{record.taskDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.taskState != null">
+                TASK_STATE = #{record.taskState,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update task_queue
+        set ID = #{record.id,jdbcType=INTEGER},
+        TASK_TYPE = #{record.taskType,jdbcType=VARCHAR},
+        TASK_ORDER = #{record.taskOrder,jdbcType=VARCHAR},
+        TASK_TARGET = #{record.taskTarget,jdbcType=VARCHAR},
+        TASK_CONTENT = #{record.taskContent,jdbcType=VARCHAR},
+        TASK_DATE = #{record.taskDate,jdbcType=TIMESTAMP},
+        TASK_STATE = #{record.taskState,jdbcType=VARCHAR},
+
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue">
+        update task_queue
+        <set>
+            <if test="taskType != null">
+                TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+            </if>
+            <if test="taskOrder != null">
+                TASK_ORDER = #{taskOrder,jdbcType=VARCHAR},
+            </if>
+            <if test="taskTarget != null">
+                TASK_TARGET = #{taskTarget,jdbcType=VARCHAR},
+            </if>
+            <if test="taskContent != null">
+                TASK_CONTENT = #{taskContent,jdbcType=VARCHAR},
+            </if>
+            <if test="taskDate != null">
+                TASK_DATE = #{taskDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="taskState != null">
+                TASK_STATE = #{taskState,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue">
+        UPDATE task_queue
+        SET TASK_TYPE    = #{taskType,jdbcType=VARCHAR},
+            TASK_ORDER   = #{taskOrder,jdbcType=VARCHAR},
+            TASK_TARGET  = #{taskTarget,jdbcType=VARCHAR},
+            TASK_CONTENT = #{taskContent,jdbcType=VARCHAR},
+            TASK_DATE    = #{taskDate,jdbcType=TIMESTAMP},
+            TASK_STATE   = #{taskState,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.TravisChenn.j2ee.SEConenct.dao.ProjectStatisticsDao" >
+  <resultMap id="BaseResultMap" type="com.TravisChenn.j2ee.Seconnect.entity.ProjectStatistics" >
+    <result column="CURRENT_LOCK_NUMBER" property="currentLockNumber" jdbcType="INTEGER" />
+    <result column="CURRENT_MANAGER_NUMBER" property="currentManagerNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CURRENT_LOCK_NUMBER, CURRENT_MANAGER_NUMBER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.ProjectStatisticsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.ProjectStatisticsExample" >
+    delete from project_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.TravisChenn.j2ee.Seconnect.entity.ProjectStatistics" >
+    insert into project_statistics (CURRENT_LOCK_NUMBER, CURRENT_MANAGER_NUMBER
+      )
+    values (#{currentLockNumber,jdbcType=INTEGER}, #{currentManagerNumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.TravisChenn.j2ee.Seconnect.entity.ProjectStatistics" >
+    insert into project_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="currentLockNumber != null" >
+        CURRENT_LOCK_NUMBER,
+      </if>
+      <if test="currentManagerNumber != null" >
+        CURRENT_MANAGER_NUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="currentLockNumber != null" >
+        #{currentLockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="currentManagerNumber != null" >
+        #{currentManagerNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.ProjectStatisticsExample" resultType="java.lang.Integer" >
+    select count(*) from project_statistics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update project_statistics
+    <set >
+      <if test="record.currentLockNumber != null" >
+        CURRENT_LOCK_NUMBER = #{record.currentLockNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.currentManagerNumber != null" >
+        CURRENT_MANAGER_NUMBER = #{record.currentManagerNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update project_statistics
+    set CURRENT_LOCK_NUMBER = #{record.currentLockNumber,jdbcType=INTEGER},
+      CURRENT_MANAGER_NUMBER = #{record.currentManagerNumber,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

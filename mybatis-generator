@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--取消注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--配置数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/seconnect?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password="adminmysql">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--POJO生成的位置-->
+        <javaModelGenerator targetPackage="com.TravisChenn.j2ee.Seconnect.entity" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--指定SQL映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="mapping" targetProject=".\src\main\resources\config\mybatis">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--指定DAO接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.TravisChenn.j2ee.Seconnect.dao" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--指定每个表的生成策略-->
+        <table tableName="member_administrator" domainObjectName="Administrator"/>
+        <table tableName="member_manager" domainObjectName="Manager"/>
+        <table tableName="member_operator" domainObjectName="Operator"/>
+        <table tableName="project_statistics" domainObjectName="ProjectStatistics"/>
+        <table tableName="station_base" domainObjectName="Station"/>
+
+    </context>
+</generatorConfiguration>

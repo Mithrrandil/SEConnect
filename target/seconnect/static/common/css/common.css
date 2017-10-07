@@ -1,0 +1,210 @@
+body{
+    display: block;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+/*高度填满父窗体*/
+.tpl-insert-height {
+    height: 100%;
+}
+
+/*顶部导航条*/
+.tpl-header {
+    height: 60px;
+
+    /*修复bootstrap额外左右外边距导致的滚动条*/
+    margin: 0;
+
+    /*底部分割线*/
+    border: 0 solid #eee;
+    border-bottom-width: 1px;
+}
+
+/*顶部导航条 LOGO*/
+.tpl-header-logo {
+    width: 180px;
+    height: 50px;
+    display: table;
+    margin: 4px auto auto;
+    cursor: pointer;
+}
+
+/*顶部导航条 消息推送*/
+.tpl-header-msg {
+
+    /*鼠标经过出现手形*/
+    cursor:pointer;
+    height: 100%;
+}
+
+/*顶部导航条 图标*/
+.tpl-header-item {
+    margin-left: 10px;
+
+    /*垂直居中*/
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*顶部导航条 数量提示图标位置*/
+.tpl-header-item-num {
+    margin-left: 10px;
+
+    /*右上角偏移*/
+    position: absolute;
+    top: 30%;
+    width: 15%;
+    transform: translate(50%,-50%);
+}
+
+/*顶部导航条 数量提示图标样式*/
+.tpl-header-item-num-badge {
+    background-color:#C30A08
+}
+
+/*底部内容*/
+.tpl-mid {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+}
+
+/*左侧导航条*/
+.tpl-mid-navbar{
+    height: 100%;
+
+    /*修复栅格系统导致的右边距空余*/
+    padding: 0;
+
+    /*右侧分割线*/
+    border: 0 solid #eee;
+    border-right-width: 1px;
+}
+
+/*左侧导航条 用户头像*/
+.tpl-mid-navbar-header {
+    width: 80px;
+    height: 80px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+/*左侧导航条 用户真实姓名*/
+.tpl-mid-navbar-realname{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.tpl-mid-navbar-node-icon{
+    margin: 5px 15px 5px 5px;
+}
+
+.tpl-mid-navbar-node-icon-child{
+    margin: 5px 15px 5px 35px;
+}
+
+/*右侧内容区域*/
+.tpl-mid-content{
+    height: 100%;
+    background-color:#fdfdfd;
+}
+
+/*卡片*/
+.card-box {
+    height:100%;
+    padding: 20px;
+    margin: 10px 10px 0 10px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+
+}
+
+/*卡片 LOGO*/
+.card-box-logo{
+    margin: 25px 20px 0 0;
+    color: rgba(225,225,225,0.2);
+}
+
+/*卡片 标题*/
+.card-box-header{
+    position: relative;
+    z-index: 35;
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+/*卡片 内容*/
+.card-box-content{
+    position: relative;
+    z-index: 35;
+    font-weight: 300;
+    display: block;
+    color: #FFFFFF;
+    font-size: 46px;
+    line-height: 46px;
+    margin-bottom: 8px;
+}
+
+/*卡片 描述*/
+.card-box-description {
+    position: relative;
+    z-index: 35;
+    display: block;
+    font-size: 14px;
+    line-height: 14px;
+    padding-top: 8px;
+    color: #FFFFFF;
+}
+
+.msg-item{
+    height: 100px;
+    color: #999;
+}
+
+.msg-item .result{
+    width: 30px;
+    height: 30px;
+    color: #0C0C0C;
+}
+
+.msg-item img{
+    width: 50px;
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 50%;
+}
+
+.msg-item div{
+    height: 20px;
+}
+
+#msg-taskType{
+    color: #000000;
+}
+
+/*操作员操作表格*/
+.operator-list{
+    width: 100%;
+
+    /*垂直居中*/
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+
+

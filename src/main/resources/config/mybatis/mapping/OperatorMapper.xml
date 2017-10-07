@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.TravisChenn.j2ee.Seconnect.dao.OperatorDao">
+    <resultMap id="BaseResultMap" type="com.TravisChenn.j2ee.Seconnect.entity.member.Operator">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="MEMBER_TYPE" property="memberType" jdbcType="VARCHAR"/>
+        <result column="CHANNEL" property="channel" jdbcType="VARCHAR"/>
+        <result column="REAL_NAME" property="realName" jdbcType="VARCHAR"/>
+        <result column="GENDER" property="gender" jdbcType="VARCHAR"/>
+        <result column="LOGIN_USERNAME" property="loginUsername" jdbcType="VARCHAR"/>
+        <result column="LOGIN_PASSWORD" property="loginPassword" jdbcType="VARCHAR"/>
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR"/>
+        <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
+        <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
+        <result column="MANAGER_ID" property="managerId" jdbcType="INTEGER"/>
+        <result column="LOG" property="log" jdbcType="VARCHAR"/>
+        <result column="MANDATORY_UNLOCK_AUTHORITY" property="mandatoryUnlockAuthority" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        ID, MEMBER_TYPE, CHANNEL, REAL_NAME, GENDER, LOGIN_USERNAME, LOGIN_PASSWORD, MOBILE,
+        EMAIL, ADDRESS, MANAGER_ID, LOG, MANDATORY_UNLOCK_AUTHORITY, MANDATORY_UNLOCK_AUTHORITY
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.OperatorExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from member_operator
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+
+    </select>
+    <select id="selectByManagerID" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from member_operator where member_operator.MANAGER_ID = #{managerID,jdbcType=INTEGER}
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from member_operator
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM member_operator
+        WHERE ID = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.OperatorExample">
+        delete from member_operator
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.TravisChenn.j2ee.Seconnect.entity.member.Operator">
+        INSERT INTO member_operator (ID, MEMBER_TYPE, CHANNEL,
+                                     REAL_NAME, GENDER, LOGIN_USERNAME,
+                                     LOGIN_PASSWORD, MOBILE, EMAIL,
+                                     ADDRESS, MANAGER_ID, LOG, MANDATORY_UNLOCK_AUTHORITY
+        )
+        VALUES (#{id,jdbcType=INTEGER}, #{memberType,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR},
+                                        #{realName,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR},
+                                        #{loginUsername,jdbcType=VARCHAR},
+                                        #{loginPassword,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR},
+                                        #{email,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},
+                                        #{managerId,jdbcType=INTEGER},#{log,jdbcType=VARCHAR},
+                                        #{mandatoryUnlockAuthority,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.TravisChenn.j2ee.Seconnect.entity.member.Operator">
+        insert into member_operator
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="memberType != null">
+                MEMBER_TYPE,
+            </if>
+            <if test="channel != null">
+                CHANNEL,
+            </if>
+            <if test="realName != null">
+                REAL_NAME,
+            </if>
+            <if test="gender != null">
+                GENDER,
+            </if>
+            <if test="loginUsername != null">
+                LOGIN_USERNAME,
+            </if>
+            <if test="loginPassword != null">
+                LOGIN_PASSWORD,
+            </if>
+            <if test="mobile != null">
+                MOBILE,
+            </if>
+            <if test="email != null">
+                EMAIL,
+            </if>
+            <if test="address != null">
+                ADDRESS,
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID,
+            </if>
+            <if test="log != null">
+                LOG,
+            </if>
+            <if test="mandatoryUnlockAuthority != null">
+                MANDATORY_UNLOCK_AUTHORITY,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="memberType != null">
+                #{memberType,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null">
+                #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="loginUsername != null">
+                #{loginUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="loginPassword != null">
+                #{loginPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="managerId != null">
+                #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="log != null">
+                #{log,jdbcType=VARCHAR},
+            </if>
+            <if test="mandatoryUnlockAuthority != null">
+                #{log,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.OperatorExample"
+            resultType="java.lang.Integer">
+        select count(*) from member_operator
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update member_operator
+        <set>
+            <if test="record.id != null">
+                ID = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.memberType != null">
+                MEMBER_TYPE = #{record.memberType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.channel != null">
+                CHANNEL = #{record.channel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.realName != null">
+                REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.gender != null">
+                GENDER = #{record.gender,jdbcType=VARCHAR},
+            </if>
+            <if test="record.loginUsername != null">
+                LOGIN_USERNAME = #{record.loginUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="record.loginPassword != null">
+                LOGIN_PASSWORD = #{record.loginPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="record.mobile != null">
+                MOBILE = #{record.mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="record.email != null">
+                EMAIL = #{record.email,jdbcType=VARCHAR},
+            </if>
+            <if test="record.address != null">
+                ADDRESS = #{record.address,jdbcType=VARCHAR},
+            </if>
+            <if test="record.managerId != null">
+                MANAGER_ID = #{record.managerId,jdbcType=INTEGER},
+            </if>
+            <if test="record.log != null">
+                LOG = #{record.log,jdbcType=VARCHAR}
+            </if>
+            <if test="record.mandatoryUnlockAuthority != null">
+                MANDATORY_UNLOCK_AUTHORITY = #{record.mandatoryUnlockAuthority,jdbcType=VARCHAR}
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update member_operator
+        set ID = #{record.id,jdbcType=INTEGER},
+        MEMBER_TYPE = #{record.memberType,jdbcType=VARCHAR},
+        CHANNEL = #{record.channel,jdbcType=VARCHAR},
+        REAL_NAME = #{record.realName,jdbcType=VARCHAR},
+        GENDER = #{record.gender,jdbcType=VARCHAR},
+        LOGIN_USERNAME = #{record.loginUsername,jdbcType=VARCHAR},
+        LOGIN_PASSWORD = #{record.loginPassword,jdbcType=VARCHAR},
+        MOBILE = #{record.mobile,jdbcType=VARCHAR},
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+        MANAGER_ID = #{record.managerId,jdbcType=INTEGER},
+        LOG = #{record.log,jdbcType=VARCHAR},
+        MANDATORY_UNLOCK_AUTHORITY = #{record.mandatoryUnlockAuthority,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.TravisChenn.j2ee.Seconnect.entity.member.Operator">
+        update member_operator
+        <set>
+            <if test="memberType != null">
+                MEMBER_TYPE = #{memberType,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null">
+                CHANNEL = #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                REAL_NAME = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                GENDER = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="loginUsername != null">
+                LOGIN_USERNAME = #{loginUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="loginPassword != null">
+                LOGIN_PASSWORD = #{loginPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                EMAIL = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                ADDRESS = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="managerId != null">
+                MANAGER_ID = #{managerId,jdbcType=INTEGER},
+            </if>
+            <if test="log != null">
+                LOG = #{log,jdbcType=VARCHAR},
+            </if>
+            <if test="mandatoryUnlockAuthority != null">
+                MANDATORY_UNLOCK_AUTHORITY = #{mandatoryUnlockAuthority,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.TravisChenn.j2ee.Seconnect.entity.member.Operator">
+        UPDATE member_operator
+        SET MEMBER_TYPE                = #{memberType,jdbcType=VARCHAR},
+            CHANNEL                    = #{channel,jdbcType=VARCHAR},
+            REAL_NAME                  = #{realName,jdbcType=VARCHAR},
+            GENDER                     = #{gender,jdbcType=VARCHAR},
+            LOGIN_USERNAME             = #{loginUsername,jdbcType=VARCHAR},
+            LOGIN_PASSWORD             = #{loginPassword,jdbcType=VARCHAR},
+            MOBILE                     = #{mobile,jdbcType=VARCHAR},
+            EMAIL                      = #{email,jdbcType=VARCHAR},
+            ADDRESS                    = #{address,jdbcType=VARCHAR},
+            MANAGER_ID                 = #{managerId,jdbcType=INTEGER},
+            LOG                        = #{log,jdbcType=VARCHAR},
+            MANDATORY_UNLOCK_AUTHORITY = #{mandatoryUnlockAuthority,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
