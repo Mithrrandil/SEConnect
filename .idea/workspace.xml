@@ -10,142 +10,11 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/TravisChenn/j2ee/Seconnect/controller/ViewController.java" line="69" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/common.ftl" line="40" />
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/content/common.ftl" line="42" />
+    <bookmark url="file://$PROJECT_DIR$/README.md" line="14" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e812fc64-2e8a-4411-a96c-9c24449bfdb0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/images/login_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SEConnect.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SEConnect_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/member-center.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/window/insert-operator.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/window/insert-single-lock.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/js/login.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/SEConenct_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEConnect.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/task-lock-add.ftl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/images/header_female.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/css/font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/animated.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/bordered-pulled.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/core.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/fixed-width.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/font-awesome.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/icons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/larger.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/list.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/path.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/rotated-flipped.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/screen-reader.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/stacked.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/less/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_animated.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_bordered-pulled.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_core.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_fixed-width.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_icons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_larger.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_list.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_path.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_rotated-flipped.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_screen-reader.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_stacked.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/font-awesome/scss/font-awesome.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/static/jQuery/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/task-lock-add.ftl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/common/images/header_female.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/css/font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/css/font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/animated.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/bordered-pulled.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/core.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/fixed-width.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/font-awesome.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/icons.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/larger.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/list.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/path.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/rotated-flipped.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/screen-reader.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/stacked.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/less/variables.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_animated.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_bordered-pulled.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_core.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_fixed-width.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_icons.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_larger.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_list.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_path.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_rotated-flipped.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_screen-reader.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_stacked.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/font-awesome/scss/font-awesome.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/seconnect/static/jQuery/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/Quartz.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/TestDao.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/images/head.jpg" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/images/head.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/images/header_male.jpg" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/images/header_male.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/TravisChenn/j2ee/Seconnect/controller/MemberController.class" afterPath="$PROJECT_DIR$/target/classes/com/TravisChenn/j2ee/Seconnect/controller/MemberController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/TravisChenn/j2ee/Seconnect/controller/ViewController.class" afterPath="$PROJECT_DIR$/target/classes/com/TravisChenn/j2ee/Seconnect/controller/ViewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect.war" afterPath="$PROJECT_DIR$/target/seconnect.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/com/TravisChenn/j2ee/Seconnect/controller/MemberController.class" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/com/TravisChenn/j2ee/Seconnect/controller/MemberController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/com/TravisChenn/j2ee/Seconnect/controller/ViewController.class" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/com/TravisChenn/j2ee/Seconnect/controller/ViewController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/common/images/head.jpg" afterPath="$PROJECT_DIR$/target/seconnect/static/common/images/head.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/common/images/header_male.jpg" afterPath="$PROJECT_DIR$/target/seconnect/static/common/images/header_male.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/TravisChenn/j2ee/Seconnect/controller/MemberController.java" afterPath="$PROJECT_DIR$/src/main/java/com/TravisChenn/j2ee/Seconnect/controller/MemberController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/TravisChenn/j2ee/Seconnect/controller/ViewController.java" afterPath="$PROJECT_DIR$/src/main/java/com/TravisChenn/j2ee/Seconnect/controller/ViewController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config/mybatis/mapping/ProjectStatisticsMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/config/mybatis/mapping/ProjectStatisticsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/header.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/header.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/msg.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/msg.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/navbar.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/common/navbar.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/content/common.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/content/common.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/content/task-lock-add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/content/task-lock-add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/common.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/common.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/login.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/login.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/manager-operator-list.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/page/admin/pages/manager-operator-list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/css/common.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/css/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/common/js/manager-operatorList.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/js/manager-operatorList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/layui/css/layui.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/layui/css/layui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config/mybatis/mapping/ProjectStatisticsMapper.xml" afterPath="$PROJECT_DIR$/target/classes/config/mybatis/mapping/ProjectStatisticsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/config/mybatis/mapping/ProjectStatisticsMapper.xml" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/classes/config/mybatis/mapping/ProjectStatisticsMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/header.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/header.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/msg.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/msg.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/navbar.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/common/navbar.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/content/common.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/content/common.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/content/task-lock-add.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/content/task-lock-add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/common.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/common.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/login.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/login.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/manager-operator-list.ftl" afterPath="$PROJECT_DIR$/target/seconnect/WEB-INF/page/admin/pages/manager-operator-list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/common/css/common.css" afterPath="$PROJECT_DIR$/target/seconnect/static/common/css/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/common/js/common.js" afterPath="$PROJECT_DIR$/target/seconnect/static/common/js/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/common/js/manager-operatorList.js" afterPath="$PROJECT_DIR$/target/seconnect/static/common/js/manager-operatorList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/seconnect/static/layui/css/layui.css" afterPath="$PROJECT_DIR$/target/seconnect/static/layui/css/layui.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/artifacts/SEConenct_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/SEConnect_war_exploded.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -186,8 +55,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="228">
-                <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <first_editor relative-caret-position="361">
+                <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -407,19 +276,14 @@
               <item name="SEConnect" type="b2602c69:ProjectViewProjectNode" />
               <item name="SEConnect" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SEConnect" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SEConnect" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -689,6 +553,7 @@
       <workItem from="1507445201515" duration="23423000" />
       <workItem from="1507518005077" duration="8613000" />
       <workItem from="1507549594245" duration="1626000" />
+      <workItem from="1507555922647" duration="1033000" />
     </task>
     <servers />
   </component>
@@ -725,7 +590,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="520629000" />
+    <option name="totallyTimeSpent" value="521662000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -743,16 +608,15 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.60954446" sideWeight="0.4477612" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3546638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4312026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24413647" sideWeight="0.48806942" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2468017" sideWeight="0.48806942" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24147122" sideWeight="0.5119306" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20095949" sideWeight="0.5116279" order="2" side_tool="true" content_ui="tabs" />
@@ -760,6 +624,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3546638" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264642" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -837,7 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="52" column="53" lean-forward="false" selection-start-line="52" selection-start-column="53" selection-end-line="52" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="547">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1125,7 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="31" column="10" lean-forward="false" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1140,8 +1002,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="228">
-            <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <first_editor relative-caret-position="361">
+            <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
