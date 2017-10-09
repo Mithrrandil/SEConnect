@@ -141,7 +141,7 @@ public class MemberController {
         if (field.equals("realName")) {
             operator.setRealName(value);
         } else if (field.equals("gender")) {
-            operator.setGender(BaseMember.Gender.valueOf(value).getZN());
+            operator.setGender(value);
         } else if (field.equals("loginPassword")) {
             operator.setLoginPassword(value);
         } else if (field.equals("mobile")) {

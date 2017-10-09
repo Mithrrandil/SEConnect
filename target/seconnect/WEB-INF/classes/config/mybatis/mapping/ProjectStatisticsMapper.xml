@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.TravisChenn.j2ee.SEConenct.dao.ProjectStatisticsDao" >
+<mapper namespace="com.TravisChenn.j2ee.Seconnect.dao.ProjectStatisticsDao" >
   <resultMap id="BaseResultMap" type="com.TravisChenn.j2ee.Seconnect.entity.ProjectStatistics" >
     <result column="CURRENT_LOCK_NUMBER" property="currentLockNumber" jdbcType="INTEGER" />
     <result column="CURRENT_MANAGER_NUMBER" property="currentManagerNumber" jdbcType="INTEGER" />

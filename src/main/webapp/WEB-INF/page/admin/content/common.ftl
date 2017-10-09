@@ -16,8 +16,8 @@
                     <div class="card-box-description">本季度增加了 ${insertLockTaskNum}个 锁柜</div>
                 </div>
                 <!--logo-->
-                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-                    <i class="fa fa-sort-numeric-desc fa-4x card-box-logo" aria-hidden="true"></i>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3" style="padding-top: 17px">
+                    <i class="layui-icon card-box-logo">&#xe64d;</i>
                 </div>
             </div>
         </div>
@@ -40,8 +40,8 @@
                     <div class="card-box-description">本季度增加了 ${insertOperatorTaskNum}个 操作员</div>
                 </div>
                 <!--logo-->
-                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-                    <i class="fa fa-male fa-4x card-box-logo" aria-hidden="true"></i>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3" style="padding-top: 8px">
+                    <i class="layui-icon card-box-logo">&#xe628;</i>
                 </div>
             </div>
         </div>
@@ -64,8 +64,8 @@
                     <div class="card-box-description">请您尽快处理消息</div>
                 </div>
                 <!--logo-->
-                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-                    <i class="fa fa-envelope-o fa-4x card-box-logo" aria-hidden="true"></i>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3" style="padding-top: 15px">
+                    <i class="layui-icon card-box-logo">&#xe63c;</i>
                 </div>
             </div>
         </div>

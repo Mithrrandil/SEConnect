@@ -18,24 +18,38 @@
 <ul class="layui-nav layui-nav-tree" lay-filter="test" style="width: 100%;height: 100%">
     <li class="layui-nav-item layui-nav-itemed">
         <a>
-            <i class="fa fa-reddit-alien tpl-mid-navbar-node-icon" aria-hidden="true"></i>人员信息管理
+            <i class="layui-icon tpl-mid-navbar-node-icon">&#xe613;</i>人员信息管理
         </a>
         <dl class="layui-nav-child">
             <dd>
                 <a  id="operator-list">
-                    <i class="fa fa-address-card tpl-mid-navbar-node-icon-child" aria-hidden="true"></i>操作员管理
+                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>操作员管理
                 </a>
             </dd>
         </dl>
     </li>
     <li class="layui-nav-item layui-nav-itemed">
         <a href="javascript:;">
-            <i class="fa fa-chain-broken tpl-mid-navbar-node-icon" aria-hidden="true"></i>锁体信息管理
+            <i class="layui-icon tpl-mid-navbar-node-icon">&#xe64c;</i>锁体信息管理
         </a>
         <dl class="layui-nav-child">
             <dd>
-                <a href="javascript:;">
-                    <i class="fa fa-plus-square tpl-mid-navbar-node-icon-child" aria-hidden="true"></i>锁柜增加
+                <a id="insert-single-lock">
+                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>锁柜增加
+                </a>
+            </dd>
+        </dl>
+        <dl class="layui-nav-child">
+            <dd>
+                <a id="insert-single-lock">
+                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>强制开锁请求
+                </a>
+            </dd>
+        </dl>
+        <dl class="layui-nav-child">
+            <dd>
+                <a id="insert-single-lock">
+                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>消息中心
                 </a>
             </dd>
         </dl>

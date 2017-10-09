@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SEConnect">
+    <output-path>$PROJECT_DIR$/out/artifacts/SEConnect</output-path>
+    <root id="archive" name="SEConnect.war" />
+  </artifact>
+</component>

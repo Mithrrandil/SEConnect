@@ -141,13 +141,37 @@ public class ViewController {
         ModelAndView modelAndView = new ModelAndView();
 
         if (taskQueueList.isEmpty()) {
-            taskQueueList = null;
+            modelAndView.addObject("taskList", null);
+            return modelAndView;
         }
 
         //3：将任务列表放入到对象中
-        modelAndView.addObject("taskList", taskQueueList);
+
+        if(taskQueueList.size() == 1){
+            modelAndView.addObject("taskList", taskQueueList.subList(0,1));
+        }else{
+            modelAndView.addObject("taskList", taskQueueList.subList(0,2));
+        }
 
         return modelAndView;
+    }
+
+    /**
+     * @return 锁体增加请求
+     */
+    @RequestMapping(value = "admin/window/insert-single-lock")
+    public ModelAndView
+    insertSingleLock(HttpServletRequest request) {
+        return new ModelAndView();
+    }
+
+    /**
+     * @return 操作员增加
+     */
+    @RequestMapping(value = "admin/window/insert-operator")
+    public ModelAndView
+    insertOperator(HttpServletRequest request) {
+        return new ModelAndView();
     }
 
 }

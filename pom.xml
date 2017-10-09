@@ -189,7 +189,7 @@
     </dependencies>
 
     <build>
-        <finalName>seconnect</finalName>
+        <finalName>SEConnect</finalName>
     </build>
 
 </project>

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SEConenct.iml" filepath="$PROJECT_DIR$/SEConenct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SEConnect.iml" filepath="$PROJECT_DIR$/SEConnect.iml" />
     </modules>
   </component>
 </project>

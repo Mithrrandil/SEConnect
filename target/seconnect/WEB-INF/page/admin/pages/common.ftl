@@ -6,7 +6,6 @@
     <link rel="icon" href="../../../../static/common/images/icon/icon_small.png" type="image/x-icon"/>
     <title>智能锁柜后台管理系统</title>
 
-    <link href="../../../../static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../../../../static/layui/css/layui.css" rel="stylesheet">
     <link href="../../../../static/toastr/toastr.min.css" rel="stylesheet">
     <link href="../../../../static/common/css/common.css" rel="stylesheet">
@@ -34,11 +33,8 @@
 
 </div>
 
-<!--柜级锁体数据增加请求模态窗-->
-<#--<#include "../common/task-lock-add.ftl">-->
-
-<script type="text/javascript" src="../../../../static/echarts/echarts.min .js"></script>
-<script type="text/javascript" src="../../../../static/jQuery/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/3.7.2/echarts-en.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../../../static/layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../../static/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="../../../../static/common/js/common.js"></script>
@@ -111,11 +107,6 @@
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-            x: 'center',
-            y: 'bottom',
-            data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
         },
         toolbox: {
             show: true,

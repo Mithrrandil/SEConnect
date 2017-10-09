@@ -5,10 +5,43 @@ body{
     overflow: hidden;
 }
 
-/*高度填满父窗体*/
-.tpl-insert-height {
-    height: 100%;
+/*登录容器*/
+.login-container{
+    height: 500px;
+
+    /*垂直居中*/
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
+
+.login-container-form-item{
+    margin-bottom: 30px;
+}
+
+.login-container-form-item-split-line{
+    width: 100%;
+    height: 3px;
+    margin-top: 5px;
+    background-color: #264480;
+}
+
+.login-box-input{
+    font-size: 15px;
+    margin-left: 10px;
+    color: #264480;
+    border: none;
+}
+
+.login-box-input::-webkit-input-placeholder{
+    font-size: 14px;
+    color: lightgray;
+}
+
+.login-container-button{
+    margin-top: 30px;
+}
+
 
 /*顶部导航条*/
 .tpl-header {
@@ -56,7 +89,7 @@ body{
     /*右上角偏移*/
     position: absolute;
     top: 30%;
-    width: 15%;
+    width: 17%;
     transform: translate(50%,-50%);
 }
 
@@ -131,7 +164,8 @@ body{
 
 /*卡片 LOGO*/
 .card-box-logo{
-    margin: 25px 20px 0 0;
+    margin-top: 10px;
+    font-size: 70px;
     color: rgba(225,225,225,0.2);
 }
 
@@ -206,5 +240,28 @@ body{
 
 }
 
+.window-header-icon{
+    margin: 20px;
+}
+
+.window-header-text{
+    margin-left: 5px;
+}
+
+.window-footer{
+    margin: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.window-footer-msg{
+    width: 100%;
+    height: 70px;
+    padding-top: 25px;
+    text-align: center;
+    cursor: pointer;
+}
 
 
+.window-hover div:hover{
+    background-color: #EEEEEE;
+}

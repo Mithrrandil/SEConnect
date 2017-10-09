@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <title>消息推送</title>
 
-    <link href="../../../../static/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../../../../static/layui/css/layui.css" rel="stylesheet">
     <link href="../../../../static/common/css/common.css" rel="stylesheet">
-
-    <style>
-        body{
-            overflow: scroll;
-        }
-    </style>
 </head>
 
-<body>
+<body class="window-hover">
 
 <#if (taskList??)>
     <#list taskList! as taskQueue>
@@ -46,28 +39,33 @@
         <div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3 msg-item">
             <div class="result" style="margin-top: 15px">
                 <button class="layui-btn layui-btn-primary layui-btn-small msg-button" name="FINISHED">
-                    <i class="fa fa-check-circle-o"></i>
+                    <i class="layui-icon">&#xe605;</i>
                 </button>
             </div>
             <div class="result">
                 <button class="layui-btn layui-btn-primary layui-btn-small msg-button" name="REFUSED" style="margin-top: 15px">
-                    <i class="fa fa-times-circle-o"></i>
+                    <i class="layui-icon">&#x1006;</i>
                 </button>
             </div>
         </div>
 
         <!--任务分割线-->
-        <hr class="layui-bg-gray">
+        <hr style="margin:0">
     </div>
     </#list>
-<#else>
-<div class="layui-row" style="margin: 200px 0 0;">
-    <img src="../../../../static/common/images/404.gif" alt="" style="width: 100px;height: 100px;margin-left: 95px"><span style="font-weight: bold ;margin-top: 5px">没有任务请求</span>
-</div>
 
+    <div class="window-footer-msg">
+        <i class="layui-icon">&#xe606;</i>&nbsp;&nbsp;查看更多
+    </div>
+
+    <#else>
+    <div class="content-null" style="margin-top: 80px">
+        <img src="../../../../static/common/images/404.gif" alt="" style="width: 100px;height: 100px;margin-left: 95px"><span style="font-weight: bold ;margin-top: 5px">没有任务请求</span>
+    </div>
 </#if>
 
-<script type="text/javascript" src="../../../../static/jQuery/jquery.min.js"></script>
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../../../static/layui/layui.all.js"></script>
 <script type="text/javascript" src="../../../../static/common/js/common.js"></script>
 </body>

@@ -1,30 +1,13 @@
 //表格对象
 var table = layui.table;
 
-//默认权限类型
-var operatorGender = "MALE";
+//表单对象
+var form = layui.form;
 
-//输入框对象容器
-var inputObjArray = [];
+//[增加操作员-性别]
+var gender;
 
-inputObjArray[0] = $('#realName');
-inputObjArray[1] = $('#loginUsername');
-inputObjArray[2] = $('#loginPassword');
-inputObjArray[3] = $('#mobile');
-inputObjArray[4] = $('#email');
-inputObjArray[5] = $('#address');
-
-//性别选择器 - 男
-$('#option_male').on('click', function () {
-    operatorGender = "MALE";
-});
-
-//性别选择器 - 女
-$('#option_female').on('click', function () {
-    operatorGender = "FEMALE";
-});
-
-//执行渲染
+//表格执行渲染
 table.render({
 
     //渲染对象
@@ -147,32 +130,63 @@ $('#btn-delete-operator').on("click", function () {
 
 //增加按钮点击事件
 $('#btn-insert-operator').on("click", function () {
-    $('#btn-insert-operator-modal').modal('show');
+    layer.open({
+
+        //iframe
+        type: 2,
+
+        //不显示标题
+        title: false,
+
+        //不显示确认按钮
+        btn: false,
+
+        //关闭模态窗效果
+        shade: 0,
+
+        //设置大小
+        area: ['600px', '535px'],
+
+        //设置弹出动画
+        anim: 5,
+
+        //显示目标页面
+        content: ['/admin/window/insert-operator']
+    });
 });
 
 //增加用户异步请求
-$("#btn-insert-member-save").bind('click', function () {
+$("#btn-insert-member-save").click(function () {
+
+    var realName = $(':input[name=realName]').val();
+
+    var loginUsername = $(':input[name=loginUsername]').val();
+    var loginPassword = $(':input[name=loginPassword]').val();
+    var mobile = $(':input[name=mobile]').val();
+    var email = $(':input[name=email]').val();
+    var address = $(':input[name=address]').val();
+
+
+
 
     //判空验证
-    if (!isFormObjBlank(inputObjArray)) {
-        toastr.error("用户信息不能为空");
-    } else if (!inputObjArray[3].val().match(/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/)) {
-        toastr.error("手机格式不正确");
-    } else if (!inputObjArray[4].val().match(/^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+(([.-])[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
-        toastr.error("邮箱格式不正确");
+    if (!mobile.match(/^0?(13[0-9]|15[012356789]|17[013678]|18[0-9]|14[57])[0-9]{8}$/)) {
+        parent.toastr.error("手机格式不正确");
+    } else if (!email.match(/^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+(([.-])[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+        parent.toastr.error("邮箱格式不正确");
     } else {
         $.ajax({
             type: "POST",
             url: "/member/insertOperator",
             data: {
-                realName: inputObjArray[0].val(),
-                gender: operatorGender,
-                loginUsername: inputObjArray[1].val(),
-                loginPassword: inputObjArray[2].val(),
+                realName: realName,
+                gender: gender,
+                loginUsername: loginUsername,
+                loginPassword: loginPassword,
                 managerID: getCookie("SECONNECT_ID"),
-                mobile: inputObjArray[3].val(),
-                email: inputObjArray[4].val(),
-                address: inputObjArray[5].val()
+                mobile: mobile,
+                email: email,
+                address: address
             },
             success: function (deleteResult) {
 
@@ -180,18 +194,21 @@ $("#btn-insert-member-save").bind('click', function () {
 
                 if (resultObj.type === "SUCCESS") {
 
-                    //1:关闭窗口
-                    $('#btn-insert-operator-modal').modal('hide');
-
-                    //2：刷新窗口
+                    //刷新窗口
                     table.reload('operatorTableID', {
                         url: "/member/selectOperatorByManagerIDLimitByPages/"
                     });
 
-                    //3：提示用户
-                    toastr.success("添加成功");
+                    //关闭弹窗
+                    //得到当前iframe层的索引
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+
+                    //提示用户
+                    parent.toastr.success("添加成功");
+
                 } else if (resultObj.type === "ERROR") {
-                    toastr.error(resultObj.msg);
+                    parent.toastr.error(resultObj.msg);
                 }
             }
         });
@@ -228,12 +245,10 @@ table.on('edit(operatorTableID)', function (obj) {
     });
 });
 
-//模态框关闭事件
-$('#btn-insert-operator-modal').on('hidden.bs.modal', function (e) {
-    inputObjArray[0].val("");
-    inputObjArray[1].val("");
-    inputObjArray[2].val("");
-    inputObjArray[3].val("");
-    inputObjArray[4].val("");
-    inputObjArray[5].val("");
+//监听下拉框事件
+form.on('select(gender)', function (data) {
+    gender = data.value;
 });
+
+
+

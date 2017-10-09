@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SEConnect:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SEConnect.war">
+      <element id="artifact" artifact-name="SEConnect:war exploded" />
+    </root>
+  </artifact>
+</component>

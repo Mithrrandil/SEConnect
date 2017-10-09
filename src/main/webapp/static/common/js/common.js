@@ -32,30 +32,6 @@ function getUrl() {
 }
 
 /**
- * 判断数组中的表单元素是否为空
- * 当表单元素为空时自动为表单外围设置红色提醒边框
- * @param formObjArray
- * @return {boolean}
- */
-function isFormObjBlank(formObjArray) {
-
-    var result = true;
-
-    for (var i = 0; i < formObjArray.length; i++) {
-
-        var item = formObjArray[i];
-
-        if (item.val() !== null) {
-            if (item.val() === "") {
-                result = false;
-            }
-        }
-    }
-
-    return result;
-}
-
-/**
  * 跳转到登录界面
  */
 function locationToLogin() {
@@ -76,82 +52,47 @@ function loginCheck() {
     }
 }
 
-// //导航栏内容设置
-// $('#tree').treeview({
-//
-//     //设置数据源
-//     data: [
-//         {
-//             text: "人员信息管理",
-//             color: "#FFFFFF",
-//             backColor: "#CACACA",
-//             state: [
-//                 {
-//                     expanded: true
-//                 }
-//             ],
-//             nodes: [
-//                 {
-//                     text: "操作员信息管理",
-//                     icon: "fa fa-user"
-//                 }
-//             ]
-//         },
-//         {
-//             text: "锁体信息管理",
-//             color: "#FFFFFF",
-//             backColor: "#CACACA",
-//             nodes: [
-//                 {
-//                     text: "锁柜增加",
-//                     icon: "fa fa-plus-circle"
-//                 }
-//             ]
-//         }
-//     ],
-//
-//     //不显示边框
-//     showBorder: false,
-//
-//     //鼠标经过颜色
-//     onhoverColor: "#F2F6F9",
-//
-//     //展开节点的显示图标
-//     collapseIcon: "fa fa-angle-up",
-//
-//     //闭合节点显示图标
-//     expandIcon: "fa fa-angle-down"
-//
-// })
-// //节点点击事件
-//     .on('nodeSelected  ', function (event, data) {
-//
-//         //操作员信息管理点击事件
-//         if (data.nodeId === 1) {
-//
-//             //页面位置检测
-//             if (getUrl().indexOf("/admin/pages/manager-operator-list") >= 0) {
-//                 toastr.warning("您已经在指定的页面啦,无需跳转");
-//             } else {
-//                 //跳转到相应页面
-//                 window.location.href = "/admin/pages/manager-operator-list";
-//             }
-//         }
-//
-//         //锁柜增加请求点击事件
-//         if (data.nodeId === 3) {
-//             $('#btn-insert-single-lock-modal').modal('show');
-//         }
-//
-//     });
-
-//左侧导航条点击事件
+//左侧导航条 [操作员管理] 点击事件
 $('#operator-list').click(function () {
     if (getUrl().indexOf("/admin/pages/manager-operator-list") >= 0) {
         toastr.warning("您已经在指定的页面,无需跳转");
     } else {
         window.location.href = "/admin/pages/manager-operator-list";
     }
+});
+
+//左侧导航条 [锁柜增加] 点击事件
+$('#insert-single-lock').click(function () {
+
+    // //清空原先窗口中的数据
+    // $(':input[name=lockNumber]').val("");
+
+    layer.open({
+
+        //iframe
+        type: 2,
+
+        //不显示标题
+        title: false,
+
+        //不显示确认按钮
+        btn: false,
+
+        //关闭模态窗效果
+        shade: 0,
+
+        //设置大小
+        area: ['600px', '300px'],
+
+        //设置弹出动画
+        anim: 5,
+
+        //显示目标页面
+        content: ['/admin/window/insert-single-lock']
+    });
+
+
+
 });
 
 //顶部消息框弹出
@@ -161,7 +102,7 @@ $('#msg').click(function () {
     var msgObj = $('#msg');
 
     var X = msgObj.offset().top + 60;
-    var Y = msgObj.offset().left - 350;
+    var Y = msgObj.offset().left - 300;
     layer.open({
 
         type: 2,
@@ -182,7 +123,7 @@ $('#msg').click(function () {
         // time: 5000,
 
         //设置大小
-        area: ['400px', '500px'],
+        area: ['350px', '270px'],
 
         //设置显示位置
         offset: [X, Y],
@@ -191,7 +132,7 @@ $('#msg').click(function () {
         anim: 5,
 
         //显示目标页面
-        content: '/admin/common/msg'
+        content: ['/admin/common/msg', 'no']
     });
 });
 
@@ -257,7 +198,7 @@ $(".msg-button").click(function () {
 });
 
 //增加柜级锁体数据保存点击事件
-$('#btn-insert-single-lock').click(function () {
+$('#insert-single-lock-submit').click(function () {
 
 
     //1：获取用户输入的增加锁柜数目
@@ -277,21 +218,16 @@ $('#btn-insert-single-lock').click(function () {
             var message = JSON.parse(data);
 
             if (message.type === 'SUCCESS') {
-                toastr.success("提交请求成功,请求进度请关注消息推送");
+                parent.toastr.success("提交请求成功,请求进度请关注消息推送");
             } else if (message.type === 'ERROR') {
-                toastr.error(message.msg);
+                parent.toastr.error(message.msg);
             }
         },
         error: function () {
-            toastr.error('服务器请求失败，请检查网络');
+            parent.toastr.error('服务器请求失败，请检查网络');
         }
     });
 
-    //清空模态窗中的数据
-    $(':input[name=lockNumber]').val("");
-
-    //关闭模态窗
-    $('#btn-insert-single-lock-modal').modal('hide');
 });
 
 //顶部logo点击事件
