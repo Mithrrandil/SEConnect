@@ -1,6 +1,6 @@
 # SEConnect 南方电网智能锁项目
 
-#项目介绍
+## 项目介绍
 基于Layui+Vue+Spring+Springmvc+Mybatis管理系统,为锁体系统提供可视化管理
 
 #项目在线演示地址
@@ -10,7 +10,7 @@ www.kangjiekeji.com/admin/pages/login
 密码:123456<br/>
 用户类型:用户管理员
 
-##项目预览图
+## 项目预览图
 ![登录页面](http://www.kangjiekeji.com/static/common/images/demo-img-3.png)
 ![首页](http://www.kangjiekeji.com/static/common/images/demo-img-1.png)
 ![操作员页面](http://www.kangjiekeji.com/static/common/images/demo-img-2.png)
