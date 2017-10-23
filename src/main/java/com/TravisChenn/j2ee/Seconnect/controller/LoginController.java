@@ -37,6 +37,9 @@ public class LoginController {
     @Resource
     private ManagerDao managerDao;
 
+    @Resource
+    private OperatorDao operatorDao;
+
     /**
      * 用户登录
      *
@@ -49,7 +52,8 @@ public class LoginController {
      */
     @RequestMapping(value = "/submit", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     public @ResponseBody
-    String submit(HttpServletResponse response, @RequestParam(name = "loginUsername") String loginUsername, @RequestParam(name = "loginPassword") String loginPassword, @RequestParam(name = "channel") String channel, @RequestParam(name = "memberType") String memberType) {
+    String submit(HttpServletResponse response, @RequestParam(name = "loginUsername") String loginUsername,
+                  @RequestParam(name = "loginPassword") String loginPassword, @RequestParam(name = "channel") String channel, @RequestParam(name = "memberType") String memberType) {
 
 
         //当用户类型为 操作员 并且登录类型为 后台时拒绝登录
@@ -62,16 +66,38 @@ public class LoginController {
 
         //添加登录成功的Cookie
         if (loginResultIndex == BaseMember.LoginResultIndex.SUCCESS) {
-            //获取当前用户的信息
 
-            ManagerExample managerExample = new ManagerExample();
-            managerExample.or().andLoginUsernameEqualTo(loginUsername);
+            String memberID = "";
+            String memberRealname = "";
+            String memberLoginUsername = "";
 
-            Manager manager = managerDao.selectByExample(managerExample).get(0);
-            WebUtil.addCookie(response, "SECONNECT_ID", String.valueOf(manager.getId()));
-            WebUtil.addCookie(response, "SECONNECT_REALNAME", String.valueOf(manager.getRealName()));
-            WebUtil.addCookie(response, "SECONNECT_LOGIN_USERNAME", String.valueOf(manager.getLoginUsername()));
+            if (memberType.equals(BaseMember.MemberType.MANAGER.name())) {
+                ManagerExample managerExample = new ManagerExample();
+                managerExample.or().andLoginUsernameEqualTo(loginUsername);
+
+                Manager manager = managerDao.selectByExample(managerExample).get(0);
+
+                memberID = String.valueOf(manager.getId());
+                memberRealname = String.valueOf(manager.getRealName());
+                memberLoginUsername = String.valueOf(manager.getLoginUsername());
+
+            } else if (memberType.equals(BaseMember.MemberType.OPERATOR.name())) {
+                OperatorExample operatorExample = new OperatorExample();
+                operatorExample.or().andLoginUsernameEqualTo(loginUsername);
+
+                Operator operator = operatorDao.selectByExample(operatorExample).get(0);
+
+                memberID = String.valueOf(operator.getId());
+                memberRealname = String.valueOf(operator.getRealName());
+                memberLoginUsername = String.valueOf(operator.getLoginUsername());
+            }
+
+            WebUtil.addCookie(response, "SECONNECT_ID", memberID);
+            WebUtil.addCookie(response, "SECONNECT_REALNAME", memberRealname);
+            WebUtil.addCookie(response, "SECONNECT_LOGIN_USERNAME", memberLoginUsername);
+
             return MessageUtil.commonSuccess();
+
         } else {
             return MessageUtil.commonMessage(Message.Type.ERROR, loginResultIndex.getZN());
         }

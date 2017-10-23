@@ -74,4 +74,7 @@ public class Manager extends BaseMember {
     /**单锁体标识*/
     private String rangeStartNumberSingle;
 
+    /**锁体数量*/
+    private Integer lockNumber;
+
 }

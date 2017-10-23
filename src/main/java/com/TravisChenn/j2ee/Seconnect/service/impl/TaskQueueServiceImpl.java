@@ -25,11 +25,11 @@ public class TaskQueueServiceImpl implements TaskQueueService {
     @Resource
     private TaskQueueDao taskQueueDao;
 
-    public int getTaskListNum(String managerLoginUsername) {
+    public int getTaskListNum(String managerRealname) {
         TaskQueueExample taskQueueExample = new TaskQueueExample();
 
         TaskQueueExample.Criteria taskQueueCriteria = taskQueueExample.createCriteria();
-        taskQueueCriteria.andTaskTargetEqualTo(managerLoginUsername).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
+        taskQueueCriteria.andTaskTargetEqualTo(managerRealname).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
         List<TaskQueue> taskQueueList = taskQueueDao.selectByExample(taskQueueExample);
 
         return taskQueueList.size();

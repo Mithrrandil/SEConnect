@@ -1,5 +1,6 @@
 package com.TravisChenn.j2ee.Seconnect.controller;
 
+import com.TravisChenn.j2ee.Seconnect.dao.ManagerDao;
 import com.TravisChenn.j2ee.Seconnect.dao.OperatorDao;
 import com.TravisChenn.j2ee.Seconnect.dao.TaskQueueDao;
 import com.TravisChenn.j2ee.Seconnect.entity.common.Message;
@@ -58,6 +59,9 @@ public class TaskQueueController {
     private OperatorDao operatorDao;
 
     @Resource
+    private ManagerDao managerDao;
+
+    @Resource
     private Scheduler scheduler;
 
     @RequestMapping(value = "/dealWithMandatoryUnlockAuthority", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
@@ -85,14 +89,14 @@ public class TaskQueueController {
 
             //计算推迟的时间 [单位: 小时]
             Date date = new Date();
-            date.setTime(date.getTime() + duration*60*60*1000);
+            date.setTime(date.getTime() + duration * 60 * 60 * 1000);
 
             //设置JobDetail
-            JobDetail jobDetail = JobBuilder.newJob(MandatoryUnlockAuthorityJob.class).withIdentity("MandatoryUnlockAuthorityJob"+taskID, "group1").usingJobData("operatorID", String.valueOf(operator.getId())).build();
+            JobDetail jobDetail = JobBuilder.newJob(MandatoryUnlockAuthorityJob.class).withIdentity("MandatoryUnlockAuthorityJob" + taskID, "group1").usingJobData("operatorID", String.valueOf(operator.getId())).build();
 
             //设置Trigger
             SimpleTrigger trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
-                    .withIdentity("MandatoryUnlockAuthorityTrigger"+taskID, "group1")
+                    .withIdentity("MandatoryUnlockAuthorityTrigger" + taskID, "group1")
                     .startAt(date)
                     .build();
 
@@ -117,7 +121,8 @@ public class TaskQueueController {
 
     @RequestMapping(value = "/addSingleLockTask", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     public @ResponseBody
-    String addSingleLockTask(@RequestParam(name = "managerLoginUsername") String managerLoginUsername, @RequestParam(name = "managerRealName") String managerRealName,@RequestParam(name = "singleLockNumber") String singleLockNumber) {
+    String addSingleLockTask(@RequestParam(name = "managerLoginUsername") String managerLoginUsername, @RequestParam(name = "managerRealName") String managerRealName, @RequestParam(name = "singleLockNumber") String singleLockNumber) {
+
 
         //获取当前时间
         Date timeNow = new Date();
@@ -130,26 +135,26 @@ public class TaskQueueController {
         List<TaskQueue> taskQueueList = taskQueueDao.selectByExample(taskQueueExample);
 
         //判断有没有符合要求的历史提交
-        if(taskQueueList.size() != 0){
+        if (taskQueueList.size() != 0) {
 
             //获取最后一个任务的时间
-            TaskQueue taskQueue = taskQueueList.get(taskQueueList.size()-1);
+            TaskQueue taskQueue = taskQueueList.get(taskQueueList.size() - 1);
             String lastTimeFormat = taskQueue.getTaskDate();
-            String lastTimeFixed = lastTimeFormat.substring(0,lastTimeFormat.length()-2);
+            String lastTimeFixed = lastTimeFormat.substring(0, lastTimeFormat.length() - 2);
             Long lastTime = null;
 
             try {
-                Date date=simpleDateFormat.parse(lastTimeFixed);
-                lastTime=date.getTime();
+                Date date = simpleDateFormat.parse(lastTimeFixed);
+                lastTime = date.getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
             //判断最后一个任务的时间和现在的时间的差值是否在一周之内
-            Long time = DateUtil.getTimeDifference(DateUtil.TimeGranularity.SECOND , lastTime ,new Date().getTime());
+            Long time = DateUtil.getTimeDifference(DateUtil.TimeGranularity.SECOND, lastTime, new Date().getTime());
 
-            if(time <= 7*24*60*60){
-                return MessageUtil.commonMessage(Message.Type.ERROR,"您不能再一周之内提交多次提交锁体增加请求");
+            if (time <= 7 * 24 * 60 * 60) {
+                return MessageUtil.commonMessage(Message.Type.ERROR, "您不能再一周之内提交多次提交锁体增加请求");
             }
 
         }
@@ -165,6 +170,29 @@ public class TaskQueueController {
 
         //同步到数据库
         taskQueueDao.insert(addLockTaskQueue);
+
+        return MessageUtil.commonSuccess();
+    }
+
+
+    @RequestMapping(value = "/addLockErrorTask", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    public @ResponseBody
+    String addLockErrorTask(@RequestParam(name = "taskType") String taskType, @RequestParam(name = "taskOrder") String taskOrder, @RequestParam(name = "managerID") String managerID, @RequestParam(name = "taskContent") String taskContent) {
+
+        TaskQueue taskQueue = new TaskQueue();
+        taskQueue.setTaskType(TaskQueue.TaskType.valueOf(taskType).getZN());
+        taskQueue.setTaskOrder(taskOrder);
+
+        taskQueue.setTaskTarget(managerDao.selectByPrimaryKey(Integer.valueOf(managerID)).get(0).getRealName());
+        taskQueue.setTaskContent(taskContent);
+
+        Date timeNow = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        taskQueue.setTaskDate(simpleDateFormat.format(timeNow));
+
+        taskQueue.setTaskState(TaskQueue.TaskState.INCOMPLETE);
+
+        taskQueueDao.insert(taskQueue);
 
         return MessageUtil.commonSuccess();
     }

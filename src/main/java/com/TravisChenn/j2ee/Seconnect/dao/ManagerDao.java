@@ -1,5 +1,6 @@
 package com.TravisChenn.j2ee.Seconnect.dao;
 
+import com.TravisChenn.j2ee.Seconnect.entity.base.LockElement;
 import com.TravisChenn.j2ee.Seconnect.entity.example.ManagerExample;
 import com.TravisChenn.j2ee.Seconnect.entity.member.Manager;
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,8 @@ public interface ManagerDao {
     List<Manager> selectByExample(ManagerExample example);
 
     List<Manager> selectByPrimaryKey(Integer id);
+
+    List<LockElement> selectByPrimaryKeyWithLockNum(Integer id);
 
     void batchDeleteByIDS(List<String> IDS);
 

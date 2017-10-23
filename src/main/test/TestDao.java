@@ -41,12 +41,19 @@ public class TestDao {
     @Resource
     private TaskQueueService taskQueueService;
 
+    @Resource
+    private MemberService memberService;
+
+    @Resource
+    private ManagerDao managerDao;
+
     @Test
     public void MybatisDaoTest() {
         System.out.println("================测试开始================");
 
-        System.out.println(taskQueueService.getLockErrorTaskInSevenDays());
+        System.out.println(managerDao.selectLockNumByManagerID(1));
 
         System.out.println("================测试结束================");
     }
+
 }

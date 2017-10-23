@@ -7,10 +7,10 @@ public interface TaskQueueService {
 
     /**
      * 获取制定管理员的任务列表
-     * @param managerLoginUsername 管理员ID
+     * @param managerRealname 管理员真实姓名
      * @return 当前管理员任务队列数量
      */
-    int getTaskListNum(String managerLoginUsername);
+    int getTaskListNum(String managerRealname);
 
 
     /**

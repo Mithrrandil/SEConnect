@@ -1,18 +1,25 @@
 package com.TravisChenn.j2ee.Seconnect.controller;
 
+import com.TravisChenn.j2ee.Seconnect.dao.AdministratorDao;
 import com.TravisChenn.j2ee.Seconnect.dao.Impl.ManagerDaoImpl;
 import com.TravisChenn.j2ee.Seconnect.dao.ManagerDao;
 import com.TravisChenn.j2ee.Seconnect.dao.OperatorDao;
 import com.TravisChenn.j2ee.Seconnect.dao.TaskQueueDao;
+import com.TravisChenn.j2ee.Seconnect.entity.base.LockElement;
 import com.TravisChenn.j2ee.Seconnect.entity.common.Message;
 import com.TravisChenn.j2ee.Seconnect.entity.base.BaseMember;
 import com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue;
+import com.TravisChenn.j2ee.Seconnect.entity.example.AdministratorExample;
+import com.TravisChenn.j2ee.Seconnect.entity.example.ManagerExample;
+import com.TravisChenn.j2ee.Seconnect.entity.example.OperatorExample;
+import com.TravisChenn.j2ee.Seconnect.entity.member.Administrator;
 import com.TravisChenn.j2ee.Seconnect.entity.member.Manager;
 import com.TravisChenn.j2ee.Seconnect.entity.member.Operator;
 import com.TravisChenn.j2ee.Seconnect.service.MemberService;
 import com.TravisChenn.j2ee.Seconnect.utils.DateUtil;
 import com.TravisChenn.j2ee.Seconnect.utils.MessageUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
@@ -40,12 +46,13 @@ public class MemberController {
     private OperatorDao operatorDao;
 
     @Resource
+    private AdministratorDao administratorDao;
+
+    @Resource
     private TaskQueueDao taskQueueDao;
 
     @Resource
     private MemberService memberService;
-
-
 
     @RequestMapping(value = "/insertOperator", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     public @ResponseBody
@@ -82,7 +89,7 @@ public class MemberController {
             //新建更新的对象
             Manager manager = new Manager();
             manager.setId(Integer.parseInt(managerID));
-            manager.setOperatorNumber(operatorNum+1);
+            manager.setOperatorNumber(operatorNum + 1);
 
             //同步到数据库
             managerDao.updateByPrimaryKeySelective(manager);
@@ -108,7 +115,7 @@ public class MemberController {
 
     @RequestMapping(value = "/deleteOperatorsByIDS", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     public @ResponseBody
-    String delete(@RequestParam(name = "IDS") String IDS , @RequestParam(name = "managerID") String managerID) {
+    String delete(@RequestParam(name = "IDS") String IDS, @RequestParam(name = "managerID") String managerID) {
 
         //删除操作员
         managerDaoImpl.deleteOperatorInIDS(IDS);
@@ -119,7 +126,7 @@ public class MemberController {
         //新建更新的对象
         Manager manager = new Manager();
         manager.setId(Integer.parseInt(managerID));
-        manager.setOperatorNumber(operatorNum-IDS.split(",").length);
+        manager.setOperatorNumber(operatorNum - IDS.split(",").length);
 
         //同步到数据库
         managerDao.updateByPrimaryKeySelective(manager);
@@ -160,6 +167,77 @@ public class MemberController {
         return MessageUtil.commonSuccess();
     }
 
+    @RequestMapping(value = "/selectBaseMember", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+    public @ResponseBody
+    String selectBaseMember(@RequestParam(name = "memberType") String memberType, @RequestParam(name = "loginUsername") String loginUsername) {
+
+        String memberMessageJsonArray = null;
+        boolean flag = true;
+
+        if (memberType.equals(BaseMember.MemberType.OPERATOR.name())) {
+
+            OperatorExample operatorExample = new OperatorExample();
+            OperatorExample.Criteria operatorCriteria = operatorExample.createCriteria();
+            operatorCriteria.andLoginUsernameEqualTo(loginUsername);
+
+            List<Operator> operatorList = operatorDao.selectByExample(operatorExample);
+
+            if (operatorList.size() != 0) {
+                memberMessageJsonArray = JSON.toJSONString(operatorList.get(0));
+            } else {
+                flag = false;
+            }
+
+        } else if (memberType.equals(BaseMember.MemberType.MANAGER.name())) {
+
+            ManagerExample managerExample = new ManagerExample();
+            ManagerExample.Criteria managerCriteria = managerExample.createCriteria();
+            managerCriteria.andLoginUsernameEqualTo(loginUsername);
+
+            List<Manager> managerList = managerDao.selectByExample(managerExample);
+
+            if (managerList.size() != 0) {
+                memberMessageJsonArray = JSON.toJSONString(managerList.get(0));
+            } else {
+                flag = false;
+            }
+
+        } else if (memberType.equals(BaseMember.MemberType.ADMINISTRATOR.name())) {
+
+            AdministratorExample administratorExample = new AdministratorExample();
+            AdministratorExample.Criteria administratorExampleCriteria = administratorExample.createCriteria();
+            administratorExampleCriteria.andLoginUsernameEqualTo(loginUsername);
+
+            List<Administrator> administratorList = administratorDao.selectByExample(administratorExample);
+
+            if (administratorList.size() != 0) {
+                memberMessageJsonArray = JSON.toJSONString(administratorList.get(0));
+            } else {
+                flag = false;
+            }
+
+        }
+
+        if (flag) {
+            return memberMessageJsonArray;
+        } else {
+            return "";
+        }
+
+    }
+
+    @RequestMapping(value = "/selectLockElementByManagerID", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    public @ResponseBody
+    String selectLockElementByManagerID(@RequestParam(name = "managerId") String managerId) {
+        List<LockElement> managerList = managerDao.selectByPrimaryKeyWithLockNum(Integer.parseInt(managerId));
+
+        if (managerList.size()!=0){
+            return JSON.toJSONString(managerList.get(0));
+        }else{
+            return MessageUtil.commonError();
+        }
+    }
+
     @RequestMapping(value = "/selectOperatorByManagerIDLimitByPages", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
     public @ResponseBody
     String select(@RequestParam(name = "managerID") String managerID, @RequestParam(name = "page") String page, @RequestParam(name = "limit") String limit) {
@@ -176,6 +254,5 @@ public class MemberController {
 
         return JSON.toJSON(message).toString();
     }
-
 
 }

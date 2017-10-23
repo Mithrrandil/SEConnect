@@ -93,9 +93,8 @@ public class MemberServiceImpl implements MemberService {
 
             if (operatorList.size() != 0) {
                 validNum = operatorList.size();
+                loginPasswordNow = operatorList.get(0).getLoginPassword();
             }
-
-            loginPasswordNow = operatorList.get(0).getLoginPassword();
 
         } else if (memberType.equals(BaseMember.MemberType.MANAGER.name())) {
 

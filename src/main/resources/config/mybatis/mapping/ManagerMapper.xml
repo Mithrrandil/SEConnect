@@ -19,6 +19,12 @@
         <result column="RANGE_START_NUMBER" property="rangeStartNumber" jdbcType="INTEGER"/>
         <result column="RANGE_START_NUMBER_SINGLE" property="rangeStartNumberSingle" jdbcType="VARCHAR"/>
     </resultMap>
+    <resultMap id="LockElement" type="com.TravisChenn.j2ee.Seconnect.entity.base.LockElement">
+        <result column="RANGE_START_NUMBER" property="rangeStartNumber" jdbcType="INTEGER"/>
+        <result column="RANGE_START_NUMBER_SINGLE" property="rangeStartNumberSingle" jdbcType="VARCHAR"/>
+        <result column="LOCK_NUMBER" property="lockNumber" jdbcType="INTEGER"/>
+        <result column="OPEN_PASSWORD" property="openPassword" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -83,6 +89,10 @@
         ID, MEMBER_TYPE, CHANNEL, REAL_NAME, GENDER, LOGIN_USERNAME, LOGIN_PASSWORD, MOBILE,
         EMAIL, ADDRESS, STATION_ID, OPERATOR_NUMBER, OPEN_PASSWORD, MANAGER_PASSWORD, RANGE_START_NUMBER, RANGE_START_NUMBER_SINGLE
     </sql>
+    <sql id="Base_Column_List_WITH_LOCK_NUM">
+        ID, MEMBER_TYPE, CHANNEL, REAL_NAME, GENDER, LOGIN_USERNAME, LOGIN_PASSWORD, MOBILE,
+        EMAIL, ADDRESS, STATION_ID, OPERATOR_NUMBER, OPEN_PASSWORD, MANAGER_PASSWORD, RANGE_START_NUMBER, RANGE_START_NUMBER_SINGLE , LOCK_NUMBER
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap"
             parameterType="com.TravisChenn.j2ee.Seconnect.entity.example.ManagerExample">
         select
@@ -103,6 +113,14 @@
         <include refid="Base_Column_List"/>
         from member_manager
         where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByPrimaryKeyWithLockNum" resultMap="LockElement" parameterType="java.lang.Integer">
+        SELECT
+            RANGE_START_NUMBER,RANGE_START_NUMBER_SINGLE,LOCK_NUMBER,OPEN_PASSWORD
+        FROM
+            member_manager
+            LEFT JOIN station_base ON member_manager.STATION_ID = station_base.ID
+        WHERE member_manager.ID=#{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM member_manager

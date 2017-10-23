@@ -55,7 +55,7 @@ public class ViewController {
         modelAndView.addObject("memberRealname", managerRealname);
 
         //消息推送数量
-        modelAndView.addObject("taskListNumber", taskQueueService.getTaskListNum(managerLoginUsername));
+        modelAndView.addObject("taskListNumber", taskQueueService.getTaskListNum(managerRealname));
 
         //锁柜总数
         modelAndView.addObject("lockNum", String.valueOf(stationDao.selectLockNumByManagerStationID(managerID).get(0).getLockNumber()));
@@ -104,7 +104,7 @@ public class ViewController {
         //当前登录的用户真实姓名
         modelAndView.addObject("memberRealname", managerRealname);
 
-        modelAndView.addObject("taskListNumber", taskQueueService.getTaskListNum(WebUtil.getCookie(request, "SECONNECT_LOGIN_USERNAME")));
+        modelAndView.addObject("taskListNumber", taskQueueService.getTaskListNum(managerRealname));
         return modelAndView;
     }
 
@@ -125,16 +125,16 @@ public class ViewController {
     msg(HttpServletRequest request) {
 
         //1：获取当前登录的管理员用户名
-        String managerLoginUsername = WebUtil.getCookie(request, "SECONNECT_LOGIN_USERNAME");
+        String managerRealName = WebUtil.getCookie(request, "SECONNECT_REALNAME");
 
         List<TaskQueue> taskQueueList = new ArrayList<TaskQueue>();
-        if (managerLoginUsername != null) {
+        if (managerRealName != null) {
 
             //2：根据指定的用户获取当前用户的任务列表
             TaskQueueExample taskQueueExample = new TaskQueueExample();
 
             Criteria taskQueueCriteria = taskQueueExample.createCriteria();
-            taskQueueCriteria.andTaskTargetEqualTo(managerLoginUsername).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
+            taskQueueCriteria.andTaskTargetEqualTo(managerRealName).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
             taskQueueList = taskQueueDao.selectByExample(taskQueueExample);
         }
 
