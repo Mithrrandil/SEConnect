@@ -103,15 +103,13 @@ $('#msg').click(function () {
 
     var X = msgObj.offset().top + 60;
     var Y = msgObj.offset().left - 300;
+
     layer.open({
 
         type: 2,
 
         //不显示标题
         title: false,
-
-        //不显示右上角关闭按钮
-        // closeBtn: 0,
 
         //不显示模态窗效果
         shade: 0,
@@ -123,7 +121,7 @@ $('#msg').click(function () {
         // time: 5000,
 
         //设置大小
-        area: ['350px', '270px'],
+        area: ['350px', '400px'],
 
         //设置显示位置
         offset: [X, Y],
@@ -132,7 +130,38 @@ $('#msg').click(function () {
         anim: 5,
 
         //显示目标页面
-        content: ['/admin/common/msg', 'no']
+        content: '/admin/common/msg',
+
+        //关闭刷新编号
+        cancel: function(index, layero){
+
+            //1: 获取当前任务数量编号 DOM 对象
+            var lockNumObj = $('#msg-num');
+
+            // 2: 刷新编号
+            $.ajax({
+                type: "POST",
+                url: "/task/getRapeLockTaskNum",
+                success: function (data) {
+
+                    // 2.1 关闭窗体
+                    layer.close(index);
+
+                    // 2.2 解析 JSON
+                    var message = JSON.parse(data);
+
+                    if (message.type === 'SUCCESS') {
+                        lockNumObj.text(message.msg);
+                    }
+                },
+                error: function () {
+                    toastr.error("服务器请求失败请检查网络");
+                }
+            });
+
+            return false;
+        }
+
     });
 });
 
@@ -149,8 +178,11 @@ $(".msg-button").click(function () {
     var content = $(this).parents(".layui-row");
 
     //根据任务类型判断提示语句
-    if (taskResult == 'FINISHED') {
+    if (taskResult === 'FINISHED') {
         var confirmMsg = "您确定要同意当前请求吗"
+    }else if(taskResult === 'LOCK_ERROR_FINISHED'){
+        var confirmMsg = "您已经安排好维修任务了吗";
+        taskResult = "FINISHED";
     } else {
         var confirmMsg = "您确定要拒绝当前请求吗"
     }
@@ -175,7 +207,7 @@ $(".msg-button").click(function () {
                     content.remove();
 
                     //当结果类型为同意时重载表格
-                    if (taskResult == 'FINISHED') {
+                    if (taskResult === 'FINISHED') {
                         parent.table.reload('operatorTableID', {
                             url: "/member/selectOperatorByManagerIDLimitByPages/"
                         });

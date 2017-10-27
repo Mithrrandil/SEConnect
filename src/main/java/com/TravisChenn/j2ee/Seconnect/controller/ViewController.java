@@ -134,7 +134,7 @@ public class ViewController {
             TaskQueueExample taskQueueExample = new TaskQueueExample();
 
             Criteria taskQueueCriteria = taskQueueExample.createCriteria();
-            taskQueueCriteria.andTaskTargetEqualTo(managerRealName).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
+            taskQueueCriteria.andTaskTargetEqualTo(managerRealName).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
             taskQueueList = taskQueueDao.selectByExample(taskQueueExample);
         }
 
@@ -147,11 +147,7 @@ public class ViewController {
 
         //3：将任务列表放入到对象中
 
-        if(taskQueueList.size() == 1){
-            modelAndView.addObject("taskList", taskQueueList.subList(0,1));
-        }else{
-            modelAndView.addObject("taskList", taskQueueList.subList(0,2));
-        }
+        modelAndView.addObject("taskList", taskQueueList);
 
         return modelAndView;
     }

@@ -29,7 +29,7 @@ public class TaskQueueServiceImpl implements TaskQueueService {
         TaskQueueExample taskQueueExample = new TaskQueueExample();
 
         TaskQueueExample.Criteria taskQueueCriteria = taskQueueExample.createCriteria();
-        taskQueueCriteria.andTaskTargetEqualTo(managerRealname).andTaskTypeEqualTo(TaskQueue.TaskType.MANDATORY_UNLOCK_AUTHORITY.getZN()).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
+        taskQueueCriteria.andTaskTargetEqualTo(managerRealname).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.FINISHED)).andTaskStateNotEqualTo(String.valueOf(TaskQueue.TaskState.REFUSED));
         List<TaskQueue> taskQueueList = taskQueueDao.selectByExample(taskQueueExample);
 
         return taskQueueList.size();
@@ -74,11 +74,7 @@ public class TaskQueueServiceImpl implements TaskQueueService {
 
         }
 
-        //拼装
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("[").append(firstDay).append("," + secondDay).append("," + thirdDay).append("," + fourthDay).append("," + fifthDay).append("," + sixthDay).append("," + seventhDay).append("]");
-
-        return stringBuilder.toString();
+        return "[" + firstDay + "," + secondDay + "," + thirdDay + "," + fourthDay + "," + fifthDay + "," + sixthDay + "," + seventhDay + "]";
 
     }
 

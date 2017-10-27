@@ -39,19 +39,5 @@
                 </a>
             </dd>
         </dl>
-        <dl class="layui-nav-child">
-            <dd>
-                <a id="insert-single-lock">
-                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>强制开锁请求
-                </a>
-            </dd>
-        </dl>
-        <dl class="layui-nav-child">
-            <dd>
-                <a id="insert-single-lock">
-                    <i class="layui-icon tpl-mid-navbar-node-icon-child">&#xe602;</i>消息中心
-                </a>
-            </dd>
-        </dl>
     </li>
 </ul>

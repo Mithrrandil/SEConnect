@@ -110,7 +110,7 @@
         where
         TO_DAYS(NOW()) - TO_DAYS(task_queue.TASK_DATE) <![CDATA[<=]]> 7
         and
-        TASK_TYPE = '锁体异常报修请求';
+        TASK_TYPE = '锁体异常提交';
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         DELETE FROM task_queue

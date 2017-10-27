@@ -12,6 +12,7 @@ import com.TravisChenn.j2ee.Seconnect.job.MandatoryUnlockAuthorityJob;
 import com.TravisChenn.j2ee.Seconnect.service.TaskQueueService;
 import com.TravisChenn.j2ee.Seconnect.utils.DateUtil;
 import com.TravisChenn.j2ee.Seconnect.utils.MessageUtil;
+import com.TravisChenn.j2ee.Seconnect.utils.WebUtil;
 import org.quartz.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -174,7 +176,6 @@ public class TaskQueueController {
         return MessageUtil.commonSuccess();
     }
 
-
     @RequestMapping(value = "/addLockErrorTask", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     public @ResponseBody
     String addLockErrorTask(@RequestParam(name = "taskType") String taskType, @RequestParam(name = "taskOrder") String taskOrder, @RequestParam(name = "managerID") String managerID, @RequestParam(name = "taskContent") String taskContent) {
@@ -195,6 +196,19 @@ public class TaskQueueController {
         taskQueueDao.insert(taskQueue);
 
         return MessageUtil.commonSuccess();
+    }
+
+    @RequestMapping(value = "/getRapeLockTaskNum", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+    public @ResponseBody
+    String getRapeLockTaskNum(HttpServletRequest request) {
+
+        //1: 获取当前登录的 管理员的真实姓名
+        String managerRealname = WebUtil.getCookie(request, "SECONNECT_REALNAME");
+
+        //2: 获取 ID 对应的管理员强制开锁任务数量
+        int taskListNum = taskQueueService.getTaskListNum(managerRealname);
+
+        return MessageUtil.commonMessage(Message.Type.SUCCESS , String.valueOf(taskListNum));
     }
 
 }

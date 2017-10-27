@@ -52,7 +52,7 @@ table.render({
         {field: 'mobile', title: '电话号码', width: 150, sort: true, edit: 'text'},
         {field: 'email', title: '邮箱', width: 200, sort: true, edit: 'text'},
         {field: 'address', title: '联系地址', width: 250, edit: 'text'},
-        {field: 'mandatoryUnlockAuthority', title: '强制开锁权限', width: 200, edit: 'text'}
+        {field:'mandatoryUnlockAuthority', title: '强制开锁权限', width: 140, templet: '#titleTpl'}
     ]]
 });
 
@@ -248,6 +248,47 @@ table.on('edit(operatorTableID)', function (obj) {
 //监听下拉框事件
 form.on('select(gender)', function (data) {
     gender = data.value;
+});
+
+form.on('switch(mandatoryUnlockAuthoritySwitch)', function(data){
+    console.log(); //得到checkbox原始DOM对象
+
+    //1: 获取当前开关的 name -> loginUsername
+    var id = data.elem.name;
+
+    //2: 提示用户
+    layer.confirm("您确定关闭当前操作员的强制开锁权限吗",  {icon: 3, title:'提示'} ,function(index){
+
+        //1: 更新表格
+        $.ajax({
+            type: "POST",
+            url: "/member/updateOperatorsByID",
+            data: {
+                id: id,
+                field: "mandatoryUnlockAuthority",
+                value: "拒绝"
+            },
+            success: function (deleteResult) {
+
+                var resultObj = JSON.parse(deleteResult);
+
+                if (resultObj.type === "SUCCESS") {
+
+                    //刷新窗口
+                    table.reload('operatorTableID', {
+                        url: "/member/selectOperatorByManagerIDLimitByPages/"
+                    });
+
+                    //提示用户
+                    toastr.success("修改成功");
+                }
+            }
+        });
+
+        layer.close(index);
+    });
+
+
 });
 
 

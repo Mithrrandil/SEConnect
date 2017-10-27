@@ -38,5 +38,28 @@
 <script type="text/javascript" src="../../../../static/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="../../../../static/common/js/common.js"></script>
 <script type="text/javascript" src="../../../../static/common/js/manager-operatorList.js"></script>
+
+<script type="text/html" id="titleTpl">
+
+    {{#  if(d.mandatoryUnlockAuthority === "同意"){ }}
+    <form class="layui-form" action="" style="float: left">
+        <div class="layui-form-item">
+            <div  style="margin-left:30px;position: relative;bottom: 6px;">
+                <input type="checkbox" name="{{d.id}}" lay-skin="switch" lay-text="开|" lay-filter="mandatoryUnlockAuthoritySwitch" checked>
+            </div>
+        </div>
+    </form>
+    {{#  } else { }}
+    <form class="layui-form" action="" style="float: left">
+        <div class="layui-form-item">
+            <div  style="margin-left:30px;position: relative;bottom: 6px;">
+                <input type="checkbox" name="{{d.id}}" lay-skin="switch" lay-text="开|" lay-filter="mandatoryUnlockAuthoritySwitch" disabled>
+            </div>
+        </div>
+    </form>
+    {{#  } }}
+
+</script>
+
 </body>
 </html>
