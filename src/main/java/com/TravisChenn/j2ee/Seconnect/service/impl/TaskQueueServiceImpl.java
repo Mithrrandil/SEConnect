@@ -3,17 +3,14 @@ package com.TravisChenn.j2ee.Seconnect.service.impl;
 import com.TravisChenn.j2ee.Seconnect.dao.TaskQueueDao;
 import com.TravisChenn.j2ee.Seconnect.entity.common.TaskQueue;
 import com.TravisChenn.j2ee.Seconnect.entity.example.TaskQueueExample;
-import com.TravisChenn.j2ee.Seconnect.entity.member.Operator;
 import com.TravisChenn.j2ee.Seconnect.service.TaskQueueService;
 import com.TravisChenn.j2ee.Seconnect.utils.DateUtil;
-import com.TravisChenn.j2ee.Seconnect.utils.WebUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Service(value = "taskService")
@@ -25,6 +22,7 @@ public class TaskQueueServiceImpl implements TaskQueueService {
     @Resource
     private TaskQueueDao taskQueueDao;
 
+    @Override
     public int getTaskListNum(String managerRealname) {
         TaskQueueExample taskQueueExample = new TaskQueueExample();
 
@@ -35,6 +33,7 @@ public class TaskQueueServiceImpl implements TaskQueueService {
         return taskQueueList.size();
     }
 
+    @Override
     public String getMandatoryUnlockAuthorityTaskInSevenDays() {
 
         //准备储存的对象
@@ -81,7 +80,7 @@ public class TaskQueueServiceImpl implements TaskQueueService {
     public Map<String,Integer> getLockErrorTaskInSevenDays() {
 
         //准备储存的对象
-        Map<String,Integer> operatorMap = new HashMap<String, Integer>();
+        Map<String,Integer> operatorMap = new HashMap<>();
 
         //获取最近7天的锁体异常任务列表
         List<TaskQueue> taskQueueList = taskQueueDao.selectLockErrorTaskInSevenDays();
@@ -100,4 +99,22 @@ public class TaskQueueServiceImpl implements TaskQueueService {
 
         return operatorMap;
     }
+
+    public Integer[] selectTaskInDays(String taskTarget, String taskType, int days) {
+
+        //1: 准备任务结果容器
+        Integer[] taskArray = new Integer[days];
+
+        //2: 获取任务
+        List<TaskQueue> taskQueueList = taskQueueDao.selectTaskInDays(taskTarget, taskType, days);
+
+        //3:将任务列表中的数据通过时间进行分组  [java8: StreamAPI]
+        Map<String, List<TaskQueue>> collect = taskQueueList.parallelStream().collect(Collectors.groupingBy(TaskQueue::getTaskDate));
+
+        //4:将分组结果放入任务结果容器中
+
+
+        return new Integer[0];
+    }
+
 }

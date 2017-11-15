@@ -66,6 +66,7 @@ public class DateUtil {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         return simpleDateFormat.format(date);
+
     }
 
     /**

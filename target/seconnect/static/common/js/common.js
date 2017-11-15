@@ -235,30 +235,37 @@ $('#insert-single-lock-submit').click(function () {
 
     //1：获取用户输入的增加锁柜数目
     var singleLockNumber = $(':input[name=lockNumber]').val();
+    console.log(singleLockNumber);
 
-    //2: 异步请求增加锁柜接口
-    $.ajax({
-        type: "POST",
-        url: "/task/addSingleLockTask",
-        data: {
-            managerLoginUsername: getCookie("SECONNECT_LOGIN_USERNAME"),
-            managerRealName: getCookie("SECONNECT_REALNAME"),
-            singleLockNumber: singleLockNumber
-        },
-        success: function (data) {
+    var regexp = new RegExp(/^[0-9]+$/);
 
-            var message = JSON.parse(data);
+    if(regexp.test(singleLockNumber)){
+        //2: 异步请求增加锁柜接口
+        $.ajax({
+            type: "POST",
+            url: "/task/addSingleLockTask",
+            data: {
+                managerLoginUsername: getCookie("SECONNECT_LOGIN_USERNAME"),
+                managerRealName: getCookie("SECONNECT_REALNAME"),
+                singleLockNumber: singleLockNumber
+            },
+            success: function (data) {
 
-            if (message.type === 'SUCCESS') {
-                parent.toastr.success("提交请求成功,请求进度请关注消息推送");
-            } else if (message.type === 'ERROR') {
-                parent.toastr.error(message.msg);
+                var message = JSON.parse(data);
+
+                if (message.type === 'SUCCESS') {
+                    parent.toastr.success("提交请求成功,请求进度请关注消息推送");
+                } else if (message.type === 'ERROR') {
+                    parent.toastr.error(message.msg);
+                }
+            },
+            error: function () {
+                parent.toastr.error('服务器请求失败，请检查网络');
             }
-        },
-        error: function () {
-            parent.toastr.error('服务器请求失败，请检查网络');
-        }
-    });
+        });
+    }else{
+        parent.toastr.error("请您输入一个合法的正整数");
+    }
 
 });
 

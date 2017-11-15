@@ -2,14 +2,10 @@ package com.TravisChenn.j2ee.Seconnect.job;
 
 import com.TravisChenn.j2ee.Seconnect.dao.OperatorDao;
 import com.TravisChenn.j2ee.Seconnect.entity.member.Operator;
-import lombok.Getter;
-import lombok.Setter;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.annotation.Resource;
 

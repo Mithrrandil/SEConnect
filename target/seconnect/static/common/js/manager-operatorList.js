@@ -194,15 +194,14 @@ $("#btn-insert-member-save").click(function () {
 
                 if (resultObj.type === "SUCCESS") {
 
-                    //刷新窗口
-                    table.reload('operatorTableID', {
-                        url: "/member/selectOperatorByManagerIDLimitByPages/"
-                    });
-
                     //关闭弹窗
-                    //得到当前iframe层的索引
                     var index = parent.layer.getFrameIndex(window.name);
                     parent.layer.close(index);
+
+                    //刷新窗口
+                    parent.table.reload('operatorTableID', {
+                        url: "/member/selectOperatorByManagerIDLimitByPages/"
+                    });
 
                     //提示用户
                     parent.toastr.success("添加成功");

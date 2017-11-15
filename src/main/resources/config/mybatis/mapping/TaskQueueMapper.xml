@@ -103,6 +103,18 @@
         and
         TASK_TYPE = '强制开锁权限请求';
     </select>
+    <select id="selectTaskInDays" resultMap="BaseResultMap">
+        SELECT
+          *
+        FROM
+        task_queue
+        WHERE
+        TASK_TARGET=#{taskTarget , jdbcType=VARCHAR}
+        AND
+        TASK_TYPE =  #{taskType , jdbcType=VARCHAR}
+        AND
+        TO_DAYS(NOW()) - TO_DAYS(TASK_DATE) <![CDATA[<=]]> #{days , jdbcType=INTEGER}
+    </select>
     <select id="selectLockErrorTaskInSevenDays" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
